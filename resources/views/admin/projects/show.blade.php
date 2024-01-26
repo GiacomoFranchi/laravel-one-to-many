@@ -5,7 +5,9 @@
         <div class="card my-4" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">{{$project->title}}</h5>
-
+                <div>
+                    Tipologia: {{$project->type ? $project->type->tipologia : 'nessuna tipologia associata'}}
+                </div>
                 @if ($project->img)
                     <div>
                         <img  src="{{asset('storage/' .$project->img)}}" alt="">

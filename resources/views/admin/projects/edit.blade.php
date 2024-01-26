@@ -21,7 +21,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('admin.projects.update', ['project' => $project->slug]) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.projects.update', ['project' => $project->slug]) }}" method="type" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="mb-3">
@@ -33,6 +33,16 @@
                     <div class="mb-3">
                         <label for="img">Immagine</label>
                         <input type="file" class="form-control" id="img" name="img">
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="tipologia">Seleziona tipologia</label>
+                        <select class="form-select" name="tipologia" id="tipologia">
+                            <option @selected(!old('type_id', $project->type_id)) value="">Nessuna categoria</option>
+                            @foreach ($types as $type)
+                                <option @selected(old('type_id', $type->type_id) == $type->id) value="{{ $type->id }}">{{ $type->tipologia }}</option>
+                            @endforeach
+                        </select>
                     </div>
         
 
