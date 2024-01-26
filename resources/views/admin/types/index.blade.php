@@ -22,8 +22,8 @@
                             <td>{{ $type->tipologia }}</td>
                             <td>{{ $type->created_at }}</td>
                             <td>
-
-                                </a>
+                                <a class="btn btn-primary" {{route('admin.types.show', ['type' => $type->slug])}}">
+                                <i class="fa-solid fa-magnifying-glass"></i></a>
                             </td>
                         </tr>
                     @endforeach
