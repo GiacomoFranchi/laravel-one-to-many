@@ -36,11 +36,11 @@
                     </div>
 
                     <div class="mb-2">
-                        <label for="tipologia">Seleziona tipologia</label>
-                        <select class="form-select" name="tipologia" id="tipologia">
+                        <label for="type">Seleziona tipologia</label>
+                        <select class="form-select" name="type" id="type">
                             <option @selected(!old('type_id', $project->type_id)) value="">Nessuna categoria</option>
                             @foreach ($types as $type)
-                                <option @selected(old('type_id', $type->type_id) == $type->id) value="{{ $type->id }}">{{ $type->tipologia }}</option>
+                                <option @selected(old('type_id', $project->type_id) == $type->id) value="{{ $type->id }}">{{ $type->tipologia }}</option>
                             @endforeach
                         </select>
                     </div>
