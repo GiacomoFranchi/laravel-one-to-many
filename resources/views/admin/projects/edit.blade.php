@@ -21,9 +21,10 @@
                     </div>
                 @endif
 
-                <form action="{{ route('admin.projects.update', ['project' => $project->slug]) }}" method="type" enctype="multipart/form-data">
+                <form action="{{ route('admin.projects.update', ['project' => $project->slug]) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
+                    
                     <div class="mb-3">
                         <label for="title" class="form-label">Titolo:</label>
                         <input type="text" class="form-control" id="title" name="title"
@@ -37,7 +38,7 @@
 
                     <div class="mb-2">
                         <label for="type">Seleziona tipologia</label>
-                        <select class="form-select" name="type" id="type">
+                        <select class="form-select" name="type_id" id="type">
                             <option @selected(!old('type_id', $project->type_id)) value="">Nessuna categoria</option>
                             @foreach ($types as $type)
                                 <option @selected(old('type_id', $project->type_id) == $type->id) value="{{ $type->id }}">{{ $type->tipologia }}</option>

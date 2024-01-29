@@ -24,6 +24,18 @@
                 <input type="text" class="form-control" style="max-height: 250px" id="title" name="title" value="{{ old('title') }}">
             </div>
             
+            {{-- Tipologia --}}
+            <div class="mb-3">
+                <label for="type">Seleziona tipologia</label>
+                <select class="form-select" name="type_id" id="type">
+                    <option @selected(!old('type_id')) value="">Nessuna categoria</option>
+                    @foreach ($types as $type)
+                        <option @selected(old('type') == $type->id) value="{{ $type->id }}">{{ $type->tipologia }}</option>
+                    @endforeach
+                </select>   
+            </div>
+
+
             <div class="mb-3">
                 <label for="img" class="form-label">Immagine: </label>
                 <input type="file" name="img" id="img" class="form-control">
