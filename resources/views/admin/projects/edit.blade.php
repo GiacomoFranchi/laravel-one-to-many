@@ -9,6 +9,7 @@
         <div class="row justify-content-center mt-5">
             <div class="col-6 mb-5">
 
+                 {{-- Messaggi errore di Validazione --}}
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -21,21 +22,25 @@
                     </div>
                 @endif
 
+                {{-- Inizio Form --}}
                 <form action="{{ route('admin.projects.update', ['project' => $project->slug]) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     
+                    {{-- Titolo --}}
                     <div class="mb-3">
                         <label for="title" class="form-label">Titolo:</label>
                         <input type="text" class="form-control" id="title" name="title"
                             value="{{ old('title', $project->title) }}">
                     </div>
 
+                     {{-- Immagine --}}
                     <div class="mb-3">
                         <label for="img">Immagine</label>
                         <input type="file" class="form-control" id="img" name="img">
                     </div>
 
+                    {{-- Tipologia --}}
                     <div class="mb-2">
                         <label for="type">Seleziona tipologia</label>
                         <select class="form-select" name="type_id" id="type">
@@ -46,7 +51,7 @@
                         </select>
                     </div>
         
-
+                    {{-- Descrizione --}}
                     <div class="mb-3">
                         <label for="content" class="form-label">Descrizione:</label>
                         <textarea class="form-control" id="content" rows="3" name="content">{{ old('content', $project->content) }}</textarea>
